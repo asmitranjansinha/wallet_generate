@@ -1,4 +1,4 @@
-# Web3 Wallet Example in Flutter
+# Web3 Wallet Generator in Flutter
 
 This Flutter app demonstrates how to generate a Web3 wallet using the `web3dart` package for wallet generation and the `bip39` package for mnemonic phrase generation. It enables users to generate a wallet and view its mnemonic phrase, private key, public key, and wallet address.
 
@@ -40,9 +40,9 @@ flutter --version
 ### Installation
 
 ```bash
-git clone web3_wallet_example
+git clone web3-wallet-generator
 
-cd web3_wallet_example
+cd web3-wallet-generator
 
 flutter pub get
 
