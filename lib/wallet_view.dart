@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:wallet_generate/web3_service.dart';
 
 class WalletView extends StatefulWidget {
-  const WalletView({Key? key}) : super(key: key);
+  const WalletView({super.key});
 
   @override
-  _WalletViewState createState() => _WalletViewState();
+  WalletViewState createState() => WalletViewState();
 }
 
-class _WalletViewState extends State<WalletView> {
+class WalletViewState extends State<WalletView> {
   final Web3Service _web3Service = Web3Service();
   String walletAddress = '';
   String privateKey = '';
@@ -42,27 +42,43 @@ class _WalletViewState extends State<WalletView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Web3 Wallet Generator'),
+        backgroundColor: Colors.black,
+        title: const Text(
+          'Web3 Wallet Generator',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            ElevatedButton(
-              onPressed: _createWallet,
-              child: Text('Create Wallet'),
-            ),
-            if (walletAddress.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Mnemonic: $mnemonic'),
-                  Text('Wallet Address: $walletAddress'),
-                  Text('Private Key: $privateKey'),
-                  Text('Public Key: $publicKey'),
-                ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: _createWallet,
+                child: const Text('Create Wallet'),
               ),
-          ],
+              const SizedBox(height: 20),
+              if (walletAddress.isNotEmpty)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Mnemonic:\n$mnemonic'),
+                    const SizedBox(height: 8),
+                    Text('Wallet Address:\n$walletAddress'),
+                    const SizedBox(height: 8),
+                    Text('Private Key:\n$privateKey'),
+                    const SizedBox(height: 8),
+                    Text('Public Key:\n$publicKey'),
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
     );
